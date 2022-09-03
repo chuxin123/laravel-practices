@@ -1,0 +1,1309 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "中台api",
+        "description": "这是演示服务，该文档提供了演示swagger api的功能",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost",
+            "description": "开发环境"
+        },
+        {
+            "url": "http://uat",
+            "description": "uat环境"
+        }
+    ],
+    "paths": {
+        "/order/v1/mail/hotel/detail/{subOrderNo}": {
+            "get": {
+                "tags": [
+                    "邮件接口"
+                ],
+                "summary": "酒店预订邮件详情",
+                "description": "酒店预订邮件详情",
+                "operationId": "HotelMail",
+                "parameters": [
+                    {
+                        "name": "subOrderNo",
+                        "in": "path",
+                        "description": "订单编号",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "请求成功示例",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "description": "请求是否成功，结果为true表示成功，false表示失败",
+                                            "type": "boolean"
+                                        },
+                                        "status": {
+                                            "description": "状态码。0为成功",
+                                            "type": "integer"
+                                        },
+                                        "message": {
+                                            "description": "消息",
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "properties": {
+                                                "cc": {
+                                                    "description": "抄送 多个收件人以,分割,抄送邮箱 没有则不传;,最后一个不能有,号，逗号是英文下的逗号",
+                                                    "type": "string"
+                                                },
+                                                "content": {
+                                                    "description": "邮件内容",
+                                                    "type": "string"
+                                                },
+                                                "mailFrom": {
+                                                    "description": "发件人 只能是如下值之1：developer@top-list.com.cn / jdyh@top-list.com.cn / it@top-list.com.cn / vip-customer@top-list.com.cn",
+                                                    "type": "string"
+                                                },
+                                                "mailTo": {
+                                                    "description": "收件人 多个收件人以,分割;,最后一个不能有,号，逗号是英文下的逗号",
+                                                    "type": "string"
+                                                },
+                                                "subject": {
+                                                    "description": "邮件主题",
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        },
+                                        "timestamp": {
+                                            "description": "接口返回的当前unix时间戳",
+                                            "type": "integer"
+                                        },
+                                        "errorInfo": {
+                                            "description": "兼容java返回数据，可废弃",
+                                            "type": "string"
+                                        },
+                                        "errorMessage": {
+                                            "description": "兼容java返回数据，可废弃",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/order/v1/mail/hotel/cancel/{subOrderNo}": {
+            "get": {
+                "tags": [
+                    "邮件接口"
+                ],
+                "summary": "酒店取消邮件详情",
+                "description": "酒店取消取邮件详情",
+                "operationId": "HotelCancelMail",
+                "parameters": [
+                    {
+                        "name": "subOrderNo",
+                        "in": "path",
+                        "description": "订单编号",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "请求成功示例",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "description": "请求是否成功，结果为true表示成功，false表示失败",
+                                            "type": "boolean"
+                                        },
+                                        "status": {
+                                            "description": "状态码。0为成功",
+                                            "type": "integer"
+                                        },
+                                        "message": {
+                                            "description": "消息",
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "properties": {
+                                                "cc": {
+                                                    "description": "抄送 多个收件人以,分割,抄送邮箱 没有则不传;,最后一个不能有,号，逗号是英文下的逗号",
+                                                    "type": "string"
+                                                },
+                                                "content": {
+                                                    "description": "邮件内容",
+                                                    "type": "string"
+                                                },
+                                                "mailFrom": {
+                                                    "description": "发件人 只能是如下值之1：developer@top-list.com.cn / jdyh@top-list.com.cn / it@top-list.com.cn / vip-customer@top-list.com.cn",
+                                                    "type": "string"
+                                                },
+                                                "mailTo": {
+                                                    "description": "收件人 多个收件人以,分割;,最后一个不能有,号，逗号是英文下的逗号",
+                                                    "type": "string"
+                                                },
+                                                "subject": {
+                                                    "description": "邮件主题",
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        },
+                                        "timestamp": {
+                                            "description": "接口返回的当前unix时间戳",
+                                            "type": "integer"
+                                        },
+                                        "errorInfo": {
+                                            "description": "兼容java返回数据，可废弃",
+                                            "type": "string"
+                                        },
+                                        "errorMessage": {
+                                            "description": "兼容java返回数据，可废弃",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/order/v1/mail/spa/detail/{subOrderNo}": {
+            "get": {
+                "tags": [
+                    "邮件接口"
+                ],
+                "summary": "spa预订邮件详情",
+                "description": "spa预订邮件详情",
+                "operationId": "SpaMail",
+                "parameters": [
+                    {
+                        "name": "subOrderNo",
+                        "in": "path",
+                        "description": "订单编号",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "请求成功示例",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "description": "请求是否成功，结果为true表示成功，false表示失败",
+                                            "type": "boolean"
+                                        },
+                                        "status": {
+                                            "description": "状态码。0为成功",
+                                            "type": "integer"
+                                        },
+                                        "message": {
+                                            "description": "消息",
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "properties": {
+                                                "cc": {
+                                                    "description": "抄送 多个收件人以,分割,抄送邮箱 没有则不传;,最后一个不能有,号，逗号是英文下的逗号",
+                                                    "type": "string"
+                                                },
+                                                "content": {
+                                                    "description": "邮件内容",
+                                                    "type": "string"
+                                                },
+                                                "mailFrom": {
+                                                    "description": "发件人 只能是如下值之1：developer@top-list.com.cn / jdyh@top-list.com.cn / it@top-list.com.cn / vip-customer@top-list.com.cn",
+                                                    "type": "string"
+                                                },
+                                                "mailTo": {
+                                                    "description": "收件人 多个收件人以,分割;,最后一个不能有,号，逗号是英文下的逗号",
+                                                    "type": "string"
+                                                },
+                                                "subject": {
+                                                    "description": "邮件主题",
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        },
+                                        "timestamp": {
+                                            "description": "接口返回的当前unix时间戳",
+                                            "type": "integer"
+                                        },
+                                        "errorInfo": {
+                                            "description": "兼容java返回数据，可废弃",
+                                            "type": "string"
+                                        },
+                                        "errorMessage": {
+                                            "description": "兼容java返回数据，可废弃",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/order/v1/mail/spa/cancel/{subOrderNo}": {
+            "get": {
+                "tags": [
+                    "邮件接口"
+                ],
+                "summary": "spa取消邮件详情",
+                "description": "spa取消邮件详情",
+                "operationId": "SpaCancelMail",
+                "parameters": [
+                    {
+                        "name": "subOrderNo",
+                        "in": "path",
+                        "description": "订单编号",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "请求成功示例",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "description": "请求是否成功，结果为true表示成功，false表示失败",
+                                            "type": "boolean"
+                                        },
+                                        "status": {
+                                            "description": "状态码。0为成功",
+                                            "type": "integer"
+                                        },
+                                        "message": {
+                                            "description": "消息",
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "properties": {
+                                                "cc": {
+                                                    "description": "抄送 多个收件人以,分割,抄送邮箱 没有则不传;,最后一个不能有,号，逗号是英文下的逗号",
+                                                    "type": "string"
+                                                },
+                                                "content": {
+                                                    "description": "邮件内容",
+                                                    "type": "string"
+                                                },
+                                                "mailFrom": {
+                                                    "description": "发件人 只能是如下值之1：developer@top-list.com.cn / jdyh@top-list.com.cn / it@top-list.com.cn / vip-customer@top-list.com.cn",
+                                                    "type": "string"
+                                                },
+                                                "mailTo": {
+                                                    "description": "收件人 多个收件人以,分割;,最后一个不能有,号，逗号是英文下的逗号",
+                                                    "type": "string"
+                                                },
+                                                "subject": {
+                                                    "description": "邮件主题",
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        },
+                                        "timestamp": {
+                                            "description": "接口返回的当前unix时间戳",
+                                            "type": "integer"
+                                        },
+                                        "errorInfo": {
+                                            "description": "兼容java返回数据，可废弃",
+                                            "type": "string"
+                                        },
+                                        "errorMessage": {
+                                            "description": "兼容java返回数据，可废弃",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/order/v1/detail/{orderNo}": {
+            "get": {
+                "tags": [
+                    "订单中心"
+                ],
+                "summary": "获取订单详情",
+                "description": "获取订单详情",
+                "operationId": "orderDetail",
+                "parameters": [
+                    {
+                        "name": "orderNo",
+                        "in": "path",
+                        "description": "主订单编号",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "请求成功示例",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "description": "请求是否成功，结果为true表示成功，false表示失败",
+                                            "type": "boolean"
+                                        },
+                                        "status": {
+                                            "description": "状态码。0为成功",
+                                            "type": "integer"
+                                        },
+                                        "message": {
+                                            "description": "消息",
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "properties": {
+                                                "orderNo": {
+                                                    "description": "订单编号",
+                                                    "type": "string"
+                                                },
+                                                "bankNo": {
+                                                    "description": "银行订单号",
+                                                    "type": "string"
+                                                },
+                                                "belongProjectCode": {
+                                                    "description": "项目归属code",
+                                                    "type": "string"
+                                                },
+                                                "belongProjectId": {
+                                                    "description": "项目归属id",
+                                                    "type": "integer"
+                                                },
+                                                "belongProjectName": {
+                                                    "description": "项目归属名称",
+                                                    "type": "string"
+                                                },
+                                                "gmtConfirm": {
+                                                    "description": "订单确认时间(支付时间)",
+                                                    "type": "string"
+                                                },
+                                                "gmtCreate": {
+                                                    "description": "创建时间",
+                                                    "type": "string"
+                                                },
+                                                "gmtExpire": {
+                                                    "description": "订单超时时间",
+                                                    "type": "string"
+                                                },
+                                                "gmtModify": {
+                                                    "description": "更新时间\t",
+                                                    "type": "string"
+                                                },
+                                                "gmtOrder": {
+                                                    "description": "下单时间",
+                                                    "type": "string"
+                                                },
+                                                "linkMan": {
+                                                    "description": "订单联系人",
+                                                    "type": "string"
+                                                },
+                                                "linkPhone": {
+                                                    "description": "订单联系电话",
+                                                    "type": "string"
+                                                },
+                                                "note": {
+                                                    "description": "订单备注",
+                                                    "type": "string"
+                                                },
+                                                "orderSourceName": {
+                                                    "description": "下单方式",
+                                                    "type": "string"
+                                                },
+                                                "orderStatus": {
+                                                    "description": "订单状态",
+                                                    "type": "integer"
+                                                },
+                                                "payTime": {
+                                                    "description": "支付时间",
+                                                    "type": "string"
+                                                },
+                                                "payTypeName": {
+                                                    "description": "支付类型",
+                                                    "type": "string"
+                                                },
+                                                "projectOrderNo": {
+                                                    "description": "项目主订单流水号",
+                                                    "type": "string"
+                                                },
+                                                "remark": {
+                                                    "description": "客服备注",
+                                                    "type": "string"
+                                                },
+                                                "sourceProjectCode": {
+                                                    "description": "项目来源code",
+                                                    "type": "string"
+                                                },
+                                                "sourceProjectId": {
+                                                    "description": "项目来源id",
+                                                    "type": "integer"
+                                                },
+                                                "sourceProjectName": {
+                                                    "description": "项目来源名称",
+                                                    "type": "string"
+                                                },
+                                                "subOrderType": {
+                                                    "description": "子订单类型",
+                                                    "type": "string"
+                                                },
+                                                "totalPayPrice": {
+                                                    "description": "实际支付金额（单位分）",
+                                                    "type": "integer"
+                                                },
+                                                "totalSalePrice": {
+                                                    "description": "订单总销售价（单位分）",
+                                                    "type": "integer"
+                                                },
+                                                "totalSettlementPrice": {
+                                                    "description": "订单总成本价（单位分）",
+                                                    "type": "integer"
+                                                },
+                                                "userId": {
+                                                    "description": "用户唯一标识",
+                                                    "type": "integer"
+                                                },
+                                                "userIdTypeName": {
+                                                    "description": "用户唯一标识类型,0:无用户标示,1:用户表自增id,2:身份证,3:手机号",
+                                                    "type": "string"
+                                                },
+                                                "userLevelName": {
+                                                    "description": "用户等级 0:无，1:VIP",
+                                                    "type": "string"
+                                                },
+                                                "userType": {
+                                                    "description": "用户类型",
+                                                    "type": "string"
+                                                },
+                                                "subOrderDetailList": {
+                                                    "description": "子订单信息",
+                                                    "type": "array",
+                                                    "items": {
+                                                        "properties": {
+                                                            "cancelReason": {
+                                                                "description": "申请取消原因",
+                                                                "type": "string"
+                                                            },
+                                                            "companyCode": {
+                                                                "description": "公司编码",
+                                                                "type": "integer"
+                                                            },
+                                                            "companyName": {
+                                                                "description": "公司名称",
+                                                                "type": "string"
+                                                            },
+                                                            "industryCode": {
+                                                                "description": "行业code",
+                                                                "type": "integer"
+                                                            },
+                                                            "industryName": {
+                                                                "description": "行业名称",
+                                                                "type": "string"
+                                                            },
+                                                            "payPrice": {
+                                                                "description": "实付价 单位：分",
+                                                                "type": "integer"
+                                                            },
+                                                            "productCode": {
+                                                                "description": "商品编码",
+                                                                "type": "integer"
+                                                            },
+                                                            "projectProductName": {
+                                                                "description": "项目商品名称",
+                                                                "type": "string"
+                                                            },
+                                                            "projectStoreName": {
+                                                                "description": "项目商户名称",
+                                                                "type": "string"
+                                                            },
+                                                            "quality": {
+                                                                "description": "数量",
+                                                                "type": "integer"
+                                                            },
+                                                            "salePrice": {
+                                                                "description": "销售价 单位：分",
+                                                                "type": "integer"
+                                                            },
+                                                            "settlementMethodCode": {
+                                                                "description": "结算方式code(111)",
+                                                                "type": "integer"
+                                                            },
+                                                            "settlementMethodName": {
+                                                                "description": "结算方式名称(111)",
+                                                                "type": "string"
+                                                            },
+                                                            "settlementPrice": {
+                                                                "description": "成本价 单位：分",
+                                                                "type": "integer"
+                                                            },
+                                                            "storeCode": {
+                                                                "description": "门店编码",
+                                                                "type": "integer"
+                                                            },
+                                                            "subOrderNo": {
+                                                                "description": "子订单编号",
+                                                                "type": "integer"
+                                                            },
+                                                            "subOrderStatus": {
+                                                                "description": "子订单状态",
+                                                                "type": "string"
+                                                            },
+                                                            "subPayStatus": {
+                                                                "description": "支付状态(131)",
+                                                                "type": "integer"
+                                                            },
+                                                            "couponResp": {
+                                                                "properties": {
+                                                                    "couponOrderRespList": {
+                                                                        "type": "array",
+                                                                        "items": {
+                                                                            "$ref": "#/components/schemas/couponOrderResp"
+                                                                        }
+                                                                    },
+                                                                    "productCategory": {
+                                                                        "description": "产品类别：210001-现金券，210002-商品券，210003-兑换券",
+                                                                        "type": "integer"
+                                                                    },
+                                                                    "productDemandCouponType": {
+                                                                        "description": "产品需求券类型：220001-实际券，220002-虚拟券",
+                                                                        "type": "integer"
+                                                                    },
+                                                                    "productLssuanceMethod": {
+                                                                        "description": "产品发放方式：211001-券码号，211002-卡号卡密，211003-券链接，211004-直充",
+                                                                        "type": "integer"
+                                                                    },
+                                                                    "providerName": {
+                                                                        "description": "渠道名称",
+                                                                        "type": "string"
+                                                                    },
+                                                                    "stockCode": {
+                                                                        "description": "库存CODE",
+                                                                        "type": "integer"
+                                                                    }
+                                                                },
+                                                                "type": "object"
+                                                            },
+                                                            "discountRespList": {
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "$ref": "#/components/schemas/discountResp"
+                                                                }
+                                                            },
+                                                            "foodResp": {
+                                                                "$ref": "#/components/schemas/foodOrderResp"
+                                                            },
+                                                            "hotelResp": {
+                                                                "$ref": "#/components/schemas/hotelOrderResp"
+                                                            },
+                                                            "spaResp": {
+                                                                "$ref": "#/components/schemas/spaResp"
+                                                            }
+                                                        },
+                                                        "type": "object"
+                                                    }
+                                                }
+                                            },
+                                            "type": "object"
+                                        },
+                                        "timestamp": {
+                                            "description": "接口返回的当前unix时间戳",
+                                            "type": "integer"
+                                        },
+                                        "errorInfo": {
+                                            "description": "兼容java返回数据，可废弃",
+                                            "type": "string"
+                                        },
+                                        "errorMessage": {
+                                            "description": "兼容java返回数据，可废弃",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/order/v1/pageList": {
+            "post": {
+                "tags": [
+                    "订单中心"
+                ],
+                "summary": "查询订单列表",
+                "description": "查询订单列表",
+                "operationId": "orderList",
+                "parameters": [
+                    {
+                        "name": "companyNatureCode",
+                        "in": "query",
+                        "description": "公司性质(238),示例值(238001)",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "couponProviderCode",
+                        "in": "query",
+                        "description": "卡券供应商渠道,示例值(123456)",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "customerRemark",
+                        "in": "query",
+                        "description": "客服备注,示例值(备注)",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "hotelEndDate",
+                        "in": "query",
+                        "description": "查询酒店入住的终止时间 格式为 yyyy-MM-dd,示例值(2021-09-30)",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "hotelStartDate",
+                        "in": "query",
+                        "description": "查询酒店入住的起始时间 格式为 yyyy-MM-dd,示例值(2021-09-24)",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "hotelTimeType",
+                        "in": "query",
+                        "description": "酒店日期查询类型(1:入离时间;2:入住时间;3:离店时间),示例值(1)",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "industry",
+                        "in": "query",
+                        "description": "行业(127),示例值(127001)",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "keyword",
+                        "in": "query",
+                        "description": "关键字：订单编号/手机号/会员编号/供应商名称,示例值(测试酒店)",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "orderEndDate",
+                        "in": "query",
+                        "description": "查询下单时间的终止时间 格式为 yyyy-MM-dd HH:mm:ss,示例值(2021-09-30 00:00:00)",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "orderStartDate",
+                        "in": "query",
+                        "description": "查询下单时间的起始时间 格式为 yyyy-MM-dd HH:mm:ss,示例值(2021-09-24 00:00:00)",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "pageIndex",
+                        "in": "query",
+                        "description": "查询第几页数据",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "description": "每页数据量",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "payEndDate",
+                        "in": "query",
+                        "description": "查询支付时间的终止时间 格式为 yyyy-MM-dd HH:mm:ss,示例值(2021-09-30 00:00:00)",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "payStartDate",
+                        "in": "query",
+                        "description": "查询支付时间的起始时间 格式为 yyyy-MM-dd HH:mm:ss,示例值(2021-09-24 00:00:00)",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "payType",
+                        "in": "query",
+                        "description": "支付方式(102),示例值(102001)",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "projectId",
+                        "in": "query",
+                        "description": "项目编号,示例值(123)",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "providerCode",
+                        "in": "query",
+                        "description": "供应商渠道(126),示例值(126001)",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "settlementType",
+                        "in": "query",
+                        "description": "结算类型,示例值(111001)",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "subOrderStatus",
+                        "in": "query",
+                        "description": "订单状态(酒店:113,卡券:114),示例值(113001)",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "subPayStatus",
+                        "in": "query",
+                        "description": "每页数据量",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "payEndDate",
+                        "in": "query",
+                        "description": "支付状态(102),示例值(131001)",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "请求成功示例",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "description": "请求是否成功，结果为true表示成功，false表示失败",
+                                            "type": "boolean"
+                                        },
+                                        "status": {
+                                            "description": "状态码。0为成功",
+                                            "type": "integer"
+                                        },
+                                        "message": {
+                                            "description": "消息",
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "properties": {
+                                                "count": {
+                                                    "description": "总的记录数",
+                                                    "type": "integer"
+                                                },
+                                                "pageCount": {
+                                                    "description": "分页记录数量",
+                                                    "type": "integer"
+                                                },
+                                                "pageNow": {
+                                                    "description": "当前页",
+                                                    "type": "integer"
+                                                },
+                                                "pageSize": {
+                                                    "description": "每页的数据条数",
+                                                    "type": "integer"
+                                                },
+                                                "list": {
+                                                    "description": "子订单信息",
+                                                    "type": "array",
+                                                    "items": {
+                                                        "properties": {
+                                                            "cancelReason": {
+                                                                "description": "申请取消原因",
+                                                                "type": "string"
+                                                            },
+                                                            "companyCode": {
+                                                                "description": "公司编码",
+                                                                "type": "integer"
+                                                            }
+                                                        },
+                                                        "type": "object"
+                                                    }
+                                                }
+                                            },
+                                            "type": "object"
+                                        },
+                                        "timestamp": {
+                                            "description": "接口返回的当前unix时间戳",
+                                            "type": "integer"
+                                        },
+                                        "errorInfo": {
+                                            "description": "兼容java返回数据，可废弃",
+                                            "type": "string"
+                                        },
+                                        "errorMessage": {
+                                            "description": "兼容java返回数据，可废弃",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/order/v1/applyCancel": {
+            "post": {
+                "tags": [
+                    "订单中心"
+                ],
+                "summary": "申请取消订单",
+                "description": "申请取消订单",
+                "operationId": "applyCancel",
+                "parameters": [
+                    {
+                        "name": "orderNo",
+                        "in": "query",
+                        "description": "订单编号",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "subOrderReqs",
+                        "in": "query",
+                        "description": "订单编号",
+                        "required": false,
+                        "schema": {
+                            "properties": {
+                                "remark": {
+                                    "description": "备注",
+                                    "type": "string"
+                                },
+                                "subOrderNo": {
+                                    "description": "子订单编号",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "请求成功示例",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "description": "请求是否成功，结果为true表示成功，false表示失败",
+                                            "type": "boolean"
+                                        },
+                                        "status": {
+                                            "description": "状态码。0为成功",
+                                            "type": "integer"
+                                        },
+                                        "message": {
+                                            "description": "消息",
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "properties": {
+                                                "orderNo": {
+                                                    "description": "订单编号",
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        },
+                                        "timestamp": {
+                                            "description": "接口返回的当前unix时间戳",
+                                            "type": "integer"
+                                        },
+                                        "errorInfo": {
+                                            "description": "兼容java返回数据，可废弃",
+                                            "type": "string"
+                                        },
+                                        "errorMessage": {
+                                            "description": "兼容java返回数据，可废弃",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/order/v1/changeStatus": {
+            "post": {
+                "tags": [
+                    "订单中心"
+                ],
+                "summary": "变更订单状态",
+                "description": "变更订单状态",
+                "operationId": "changeStatus",
+                "parameters": [
+                    {
+                        "name": "operateType",
+                        "in": "query",
+                        "description": "操作类型 115001:预定成功; 115002:预定失败; 115003:取消成功; 115004:取消失败 115005:修改主订单备注 115006:卡券状态变更 115007:酒店订单信息变更,示例值(105001)",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "bookFailReq",
+                        "in": "query",
+                        "description": "预定失败",
+                        "required": false,
+                        "schema": {
+                            "properties": {
+                                "failReasonType": {
+                                    "description": "预定失败原因类型 117001:无; 117002:满房; 117003:时效问题无法预约; 117004:其他,示例值(117001)",
+                                    "type": "integer"
+                                },
+                                "failReason": {
+                                    "description": "预定失败原因,示例值(三方酒店不可预定)",
+                                    "type": "string"
+                                },
+                                "subOrderNo": {
+                                    "description": "子订单编号",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    {
+                        "name": "bookSuccessReq",
+                        "in": "query",
+                        "description": "预定失败",
+                        "required": false,
+                        "schema": {
+                            "properties": {
+                                "remark": {
+                                    "description": "备注",
+                                    "type": "string"
+                                },
+                                "subOrderNo": {
+                                    "description": "子订单编号",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "请求成功示例",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "description": "请求是否成功，结果为true表示成功，false表示失败",
+                                            "type": "boolean"
+                                        },
+                                        "status": {
+                                            "description": "状态码。0为成功",
+                                            "type": "integer"
+                                        },
+                                        "message": {
+                                            "description": "消息",
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "properties": {
+                                                "orderNo": {
+                                                    "description": "订单编号",
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        },
+                                        "timestamp": {
+                                            "description": "接口返回的当前unix时间戳",
+                                            "type": "integer"
+                                        },
+                                        "errorInfo": {
+                                            "description": "兼容java返回数据，可废弃",
+                                            "type": "string"
+                                        },
+                                        "errorMessage": {
+                                            "description": "兼容java返回数据，可废弃",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/order/v1/project/list/{industry}": {
+            "get": {
+                "tags": [
+                    "订单项目接口"
+                ],
+                "summary": "订单项目接口",
+                "description": "根据行业获取订单项目列表",
+                "operationId": "projectList",
+                "parameters": [
+                    {
+                        "name": "industry",
+                        "in": "path",
+                        "description": "行业编号",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "请求成功示例",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "description": "请求是否成功，结果为true表示成功，false表示失败",
+                                            "type": "boolean"
+                                        },
+                                        "status": {
+                                            "description": "状态码。0为成功",
+                                            "type": "integer"
+                                        },
+                                        "message": {
+                                            "description": "消息",
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "projectCode": {
+                                                        "description": "项目编号",
+                                                        "type": "string"
+                                                    },
+                                                    "projectId": {
+                                                        "description": "项目id",
+                                                        "type": "integer"
+                                                    },
+                                                    "projectName": {
+                                                        "description": "项目名称",
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        },
+                                        "timestamp": {
+                                            "description": "接口返回的当前unix时间戳",
+                                            "type": "integer"
+                                        },
+                                        "errorInfo": {
+                                            "description": "兼容java返回数据，可废弃",
+                                            "type": "string"
+                                        },
+                                        "errorMessage": {
+                                            "description": "兼容java返回数据，可废弃",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "couponOrderResp": {
+                "allOf": [
+                    {
+                        "properties": {
+                            "user_id": {
+                                "description": "用户ID",
+                                "type": "integer"
+                            },
+                            "email": {
+                                "description": "email",
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    }
+                ]
+            },
+            "hotelOrderResp": {
+                "allOf": [
+                    {
+                        "properties": {
+                            "user_id": {
+                                "description": "用户ID",
+                                "type": "integer"
+                            },
+                            "email": {
+                                "description": "email",
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    }
+                ]
+            },
+            "foodOrderResp": {
+                "allOf": [
+                    {
+                        "properties": {
+                            "user_id": {
+                                "description": "用户ID",
+                                "type": "integer"
+                            },
+                            "email": {
+                                "description": "email",
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    }
+                ]
+            },
+            "discountResp": {
+                "allOf": [
+                    {
+                        "properties": {
+                            "user_id": {
+                                "description": "用户ID",
+                                "type": "integer"
+                            },
+                            "email": {
+                                "description": "email",
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    }
+                ]
+            },
+            "spaResp": {
+                "allOf": [
+                    {
+                        "properties": {
+                            "user_id": {
+                                "description": "用户ID",
+                                "type": "integer"
+                            },
+                            "email": {
+                                "description": "email",
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    }
+                ]
+            }
+        }
+    }
+}
